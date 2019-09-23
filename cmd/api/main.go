@@ -9,8 +9,9 @@ import (
 
 // HelloWorldRes .
 type HelloWorldRes struct {
-	Msg  string
-	Time int64
+	Msg     string
+	Time    int64
+	Version int
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
@@ -18,8 +19,9 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 	now := time.Now().Unix()
 	res := HelloWorldRes{
-		Msg:  "HomeEndpoint",
-		Time: now,
+		Msg:     "HomeEndpoint",
+		Time:    now,
+		Version: 4,
 	}
 	body, _ := json.Marshal(res)
 	length := len(body)
