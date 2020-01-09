@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -21,7 +22,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 	res := HelloWorldRes{
 		Msg:     "HomeEndpoint",
 		Time:    now,
-		Version: 4,
+		Version: 1,
 	}
 	body, _ := json.Marshal(res)
 	length := len(body)
@@ -34,6 +35,6 @@ func home(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", home)
-
+	log.Println("Starting Server...")
 	http.ListenAndServe(":8080", nil)
 }
